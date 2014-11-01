@@ -1,0 +1,28 @@
+<ui:composition template="template.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="conteudo">
+        <h:form>
+            <h:messages globalOnly="true"/>
+
+            <h:inputHidden value="#{cadastroContatoBean.contato.id}"/>
+
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Nome: " for="nome"/>
+                <h:inputText id="nome" value="#{cadastroContatoBean.contato.nome}"/>
+
+                <h:outputLabel value="Data de Nascimento: " for="dataNascimento"/>
+                <h:inputText id="dataNascimento" value="#{cadastroContatoBean.contato.dataNascimento}">
+                    <f:converter converterId="dateCalendarConverter"/>
+                </h:inputText>
+
+                <h:outputLabel value="Endereço: " for="endereco"/>
+                <h:inputText id="endereco" value="#{cadastroContatoBean.contato.endereco}"/>                
+
+                <h:commandButton value="Enviar" action="#{cadastroContatoBean.grava}"/>
+                <h:button value="Lista de Contatos" outcome="lista-contatos"/>
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>
